@@ -166,7 +166,7 @@ img{
 </div>
 
 <div class="product-card">
-  <h3>👕 T-Shirts</h3>
+  <h3>👕 T-Shirt</h3>
   
   <p>Trendy and comfortable T-Shirts.</p>
 
@@ -206,13 +206,16 @@ img{
 <p>© 2026 Velnora. All Rights Reserved.</p>
 </footer>
   <script>
-function filterProduct(category){
+function searchProduct(){
+  let input = document.getElementById("search").value.toLowerCase();
   let products = document.getElementsByClassName("product-card");
 
   for(let i=0; i<products.length; i++){
     let text = products[i].innerText.toLowerCase();
 
-    if(category === "all" || text.includes(category)){
+    text = text.replace("-", "");
+
+    if(input === "" || text.includes(input)){
       products[i].style.display="block";
     }else{
       products[i].style.display="none";
