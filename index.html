@@ -107,7 +107,7 @@ img{
   <a href="#">Contact</a>
 </nav>
 <div class="search-box">
-  <input type="text" placeholder="Search products...">
+  <input id="search" type="text" placeholder="Search products..." onkeyup="searchProduct()">
 </div>
   <h2>Shop by Category</h2>
 
@@ -206,5 +206,21 @@ img{
 
 <p>© 2026 Velnora. All Rights Reserved.</p>
 </footer>
+  <script>
+function searchProduct(){
+  let input = document.getElementById("search").value.toLowerCase();
+  let products = document.getElementsByClassName("product-card");
+
+  for(let i=0; i<products.length; i++){
+    let text = products[i].innerText.toLowerCase();
+
+    if(text.includes(input)){
+      products[i].style.display="block";
+    }else{
+      products[i].style.display="none";
+    }
+  }
+}
+</script>
 </body>
 </html>
