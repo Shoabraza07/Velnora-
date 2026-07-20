@@ -207,21 +207,23 @@ img{
 </footer>
   <script>
 function searchProduct(){
-  let input = document.getElementById("search").value.toLowerCase();
+  let input = document.getElementById("search").value.toLowerCase().trim();
   let products = document.getElementsByClassName("product-card");
 
   for(let i=0; i<products.length; i++){
     let text = products[i].innerText.toLowerCase();
 
-    text = text.replace("-", "");
+    text = text.replace(/[-\s]/g, "");
 
-    if(input === "" || text.includes(input)){
+    let search = input.replace(/[-\s]/g, "");
+
+    if(search === "" || text.includes(search)){
       products[i].style.display="block";
     }else{
       products[i].style.display="none";
     }
   }
 }
-</script>
+  </script>
 </body>
 </html>
