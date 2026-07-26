@@ -408,38 +408,34 @@ nav a{
 
 <p>© 2026 Velnora. All Rights Reserved.</p>
 </footer>
-  <script>
-function searchProduct(){
+<script>
+function searchProduct() {
   let input = document.getElementById("search").value.toLowerCase().trim();
-  let products = document.getElementsByClassName("product-card");
-
-  for(let i=0; i<products.length; i++){
-    let text = products[i].innerText.toLowerCase();
-
-    text = text.replace(/[-\s]/g, "");
-
-    let search = input.replace(/[-\s]/g, "");
-
-    if(search === "" || text.includes(search)){
-      products[i].style.display="block";
-    }else{
-      products[i].style.display="none";
-    }
-  }
-}
-
-function filterProducts(category){
   let products = document.querySelectorAll(".product-card");
 
-  products.forEach(function(product){
-    if(category === "all" || product.dataset.category === category){
+  products.forEach(function(product) {
+    let text = product.innerText.toLowerCase().replace(/[-\s]/g, "");
+    let search = input.replace(/[-\s]/g, "");
+
+    if (search === "" || text.includes(search)) {
       product.style.display = "block";
-    }else{
+    } else {
       product.style.display = "none";
     }
   });
 }
 
-  </script>
+function filterProducts(category) {
+  let products = document.querySelectorAll(".product-card");
+
+  products.forEach(function(product) {
+    if (category === "all" || product.dataset.category === category) {
+      product.style.display = "block";
+    } else {
+      product.style.display = "none";
+    }
+  });
+}
+</script>
 </body>
 </html>
